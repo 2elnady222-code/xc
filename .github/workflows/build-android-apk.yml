@@ -40,16 +40,16 @@ jobs:
         working-directory: apple-tool-pro-mobile
         run: pnpm exec expo prebuild --platform android --non-interactive
 
-      - name: Build debug APK
+      - name: Build release APK
         working-directory: apple-tool-pro-mobile/android
         env:
           NODE_ENV: production
-        run: ./gradlew assembleDebug -PbundleInDebug=true --no-daemon
+        run: ./gradlew assembleRelease --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Apple-Tool-Pro-Android-APK
-          path: apple-tool-pro-mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          path: apple-tool-pro-mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
           retention-days: 7
