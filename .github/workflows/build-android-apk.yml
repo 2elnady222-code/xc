@@ -42,7 +42,7 @@ jobs:
 
       - name: Build debug APK
         working-directory: apple-tool-pro-mobile/android
-        run: ./gradlew assembleDebug --no-daemon
+        run: ./gradlew assembleDebug -PbundleInDebug=true --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
